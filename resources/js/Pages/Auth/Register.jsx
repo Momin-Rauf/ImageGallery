@@ -5,6 +5,7 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import login from '../login.jpeg'
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -29,8 +30,11 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
-
-            <form onSubmit={submit}>
+            <div className='relative bottom-6 border-[1px] flex flex-row justify-center items-center shadow-sm rounded-lg shadow-black' >
+                <div><img className='h-[530px] ' src={login} alt="" /></div>
+            <div className='items-center justify-between p-11 gap-5 flex flex-col h-auto'>
+            <h1 className='font-bold text-[25px]' >Registration</h1>
+            <form className='border-[1px] shadow-sm shadow-gray-800 flex flex-col p-6 gap-3 rounded-md bg-[#ced2d3]' onSubmit={submit} >
                 <div>
                     <InputLabel htmlFor="name" value="Name" />
 
@@ -38,7 +42,7 @@ export default function Register() {
                         id="name"
                         name="name"
                         value={data.name}
-                        className="mt-1 block w-full"
+                        className="pl-4 rounded-full pt-1 pb-[.5px]"
                         autoComplete="name"
                         isFocused={true}
                         onChange={(e) => setData('name', e.target.value)}
@@ -48,7 +52,7 @@ export default function Register() {
                     <InputError message={errors.name} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
@@ -56,16 +60,16 @@ export default function Register() {
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="pl-4 rounded-full pt-1 pb-[.5px]"
                         autoComplete="username"
                         onChange={(e) => setData('email', e.target.value)}
                         required
                     />
 
                     <InputError message={errors.email} className="mt-2" />
-                </div>
+                
 
-                <div className="mt-4">
+                
                     <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
@@ -73,16 +77,16 @@ export default function Register() {
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="pl-4 rounded-full pt-1 pb-[.5px]"
                         autoComplete="new-password"
                         onChange={(e) => setData('password', e.target.value)}
                         required
                     />
 
                     <InputError message={errors.password} className="mt-2" />
-                </div>
+                
 
-                <div className="mt-4">
+                
                     <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
                     <TextInput
@@ -90,14 +94,14 @@ export default function Register() {
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
+                        className="pl-4 rounded-full pt-1 pb-[.5px]"
                         autoComplete="new-password"
                         onChange={(e) => setData('password_confirmation', e.target.value)}
                         required
                     />
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
-                </div>
+                
 
                 <div className="flex items-center justify-end mt-4">
                     <Link
@@ -112,6 +116,8 @@ export default function Register() {
                     </PrimaryButton>
                 </div>
             </form>
+        </div>
+        </div>
         </GuestLayout>
     );
 }
